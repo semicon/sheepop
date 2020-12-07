@@ -2944,11 +2944,12 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		C3.Plugins.Spritefont2.Acts.SetText,
 		C3.Plugins.Touch.Cnds.OnTouchStart,
 		C3.Plugins.System.Cnds.CompareBoolVar,
-		C3.Plugins.Sprite.Acts.Spawn,
+		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Touch.Exps.X,
 		C3.Plugins.Touch.Exps.Y,
 		C3.Plugins.Touch.Cnds.IsInTouch,
+		C3.Plugins.TiledBg.Acts.SetPosToObject,
 		C3.Plugins.Sprite.Acts.SetTowardPosition,
 		C3.Plugins.TiledBg.Acts.SetWidth,
 		C3.Plugins.Sprite.Exps.Y,
@@ -2958,6 +2959,7 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		C3.Plugins.TiledBg.Acts.SetAngle,
 		C3.Plugins.Sprite.Exps.Angle,
 		C3.Plugins.Touch.Cnds.OnTouchEnd,
+		C3.Plugins.TiledBg.Cnds.CompareWidth,
 		C3.Behaviors.Platform.Acts.SetEnabled,
 		C3.Behaviors.Bullet.Acts.SetEnabled,
 		C3.Behaviors.Bullet.Acts.SetGravity,
@@ -2969,7 +2971,6 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.AddVar,
 		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.System.Acts.CreateObject,
 		C3.Plugins.System.Exps.random,
 		C3.Plugins.TiledBg.Acts.SetY,
 		C3.Plugins.TiledBg.Cnds.CompareX,
@@ -3115,11 +3116,11 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 			const v0 = p._GetNode(0).GetVar();
 			return () => v0.GetValue();
 		},
-		() => 1,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			return () => f0();
 		},
+		() => 1,
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -3135,6 +3136,7 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
+		() => 20,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
