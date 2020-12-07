@@ -3136,7 +3136,7 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 			const n0 = p._GetNode(0);
 			return () => n0.ExpObject();
 		},
-		() => 20,
+		() => 50,
 		p => {
 			const n0 = p._GetNode(0);
 			return () => n0.ExpInstVar();
