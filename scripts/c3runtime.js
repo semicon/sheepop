@@ -2942,9 +2942,12 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		C3.Plugins.Sprite.Exps.X,
 		C3.Plugins.Sprite.Acts.MoveToTop,
 		C3.Plugins.Spritefont2.Acts.SetText,
-		C3.Plugins.Touch.Cnds.OnTouchStart,
 		C3.Plugins.System.Cnds.CompareBoolVar,
+		C3.Plugins.System.Cnds.TriggerOnce,
 		C3.Plugins.System.Acts.CreateObject,
+		C3.Plugins.System.Exps.random,
+		C3.Plugins.Sprite.Acts.SetInstanceVar,
+		C3.Plugins.Touch.Cnds.OnTouchStart,
 		C3.Plugins.Sprite.Acts.SetPos,
 		C3.Plugins.Touch.Exps.X,
 		C3.Plugins.Touch.Exps.Y,
@@ -2953,11 +2956,10 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		C3.Plugins.Sprite.Acts.SetTowardPosition,
 		C3.Plugins.TiledBg.Acts.SetWidth,
 		C3.Plugins.Sprite.Exps.Y,
-		C3.Plugins.Sprite.Acts.SetInstanceVar,
-		C3.Plugins.TiledBg.Exps.Width,
-		C3.Plugins.TiledBg.Exps.Angle,
 		C3.Plugins.TiledBg.Acts.SetAngle,
 		C3.Plugins.Sprite.Exps.Angle,
+		C3.Plugins.TiledBg.Exps.Width,
+		C3.Plugins.TiledBg.Exps.Angle,
 		C3.Plugins.Touch.Cnds.OnTouchEnd,
 		C3.Plugins.TiledBg.Cnds.CompareWidth,
 		C3.Behaviors.Platform.Acts.SetEnabled,
@@ -2970,13 +2972,11 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		C3.Plugins.Sprite.Cnds.CompareInstanceVar,
 		C3.Plugins.System.Acts.Wait,
 		C3.Plugins.System.Acts.AddVar,
-		C3.Plugins.System.Cnds.TriggerOnce,
-		C3.Plugins.System.Exps.random,
-		C3.Plugins.TiledBg.Acts.SetY,
 		C3.Plugins.TiledBg.Cnds.CompareX,
 		C3.Plugins.Sprite.Cnds.CompareX,
 		C3.Plugins.Sprite.Acts.Destroy,
 		C3.Plugins.Sprite.Cnds.IsOutsideLayout,
+		C3.Plugins.Sprite.Acts.SetVisible,
 		C3.Plugins.System.Acts.RestartLayout,
 		C3.Plugins.System.Acts.ResetGlobals
 		];
@@ -2992,8 +2992,6 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		{speed: 0},
 		{angleshoot: 0},
 		{movevalue: 0},
-		{start_X: 0},
-		{start_Y: 0},
 		{Bullet: 0},
 		{Platform: 0},
 		{player: 0},
@@ -3003,6 +3001,8 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		{cloud: 0},
 		{SpriteFont: 0},
 		{point: 0},
+		{Sprite: 0},
+		{Sprite2: 0},
 		{move: 0},
 		{touch: 0},
 		{score: 0}
@@ -3118,9 +3118,19 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0();
+			const n1 = p._GetNode(1);
+			const n2 = p._GetNode(2);
+			return () => f0((n1.ExpObject() + 150), (n2.ExpObject() + 300));
+		},
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0(350, 700);
 		},
 		() => 1,
+		p => {
+			const f0 = p._GetNode(0).GetBoundMethod();
+			return () => f0();
+		},
 		p => {
 			const f0 = p._GetNode(0).GetBoundMethod();
 			const f1 = p._GetNode(1).GetBoundMethod();
@@ -3130,11 +3140,11 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => (n0.ExpObject() * 2);
+			return () => n0.ExpObject();
 		},
 		p => {
 			const n0 = p._GetNode(0);
-			return () => n0.ExpObject();
+			return () => (n0.ExpObject() * 2);
 		},
 		() => 50,
 		p => {
@@ -3147,19 +3157,10 @@ VectorY(){return this._GetVectorY()},JumpSustain(){return this._GetJumpSustain()
 		},
 		() => 0.2,
 		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			const n1 = p._GetNode(1);
-			const n2 = p._GetNode(2);
-			return () => f0((n1.ExpObject() + 150), (n2.ExpObject() + 300));
-		},
-		p => {
-			const f0 = p._GetNode(0).GetBoundMethod();
-			return () => f0(350, 700);
-		},
-		p => {
 			const n0 = p._GetNode(0);
 			return () => (n0.ExpObject() - 300);
-		}
+		},
+		() => 5
 	];
 }
 
